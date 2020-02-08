@@ -8,6 +8,7 @@ pipeline {
             }
             steps {
                sh 'mvn -B test'
+	       sh 'mvn checkstyle:check'
             }
         }
         stage('Build') {
