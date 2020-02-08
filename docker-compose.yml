@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 services:
   api-layer:
     build: .
@@ -14,7 +14,7 @@ services:
     links:
       - persistence-layer
   persistence-layer:
-    image: mongo
+    image: mongo:4.0
     container_name: taskapp-mongodb
     ports:
       - 27017:27017
