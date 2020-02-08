@@ -10,12 +10,21 @@ pipeline {
                sh 'mvn -B test'
             }
         }
-	stage('Sonar') {
+	stage('CheckStyle') {
 			agent {
                 docker { image 'maven:3-alpine' }
             }
             steps {
 	       sh 'mvn checkstyle:check'
+            }
+        }
+		
+	stage('Sonar') {
+			agent {
+                docker { image 'maven:3-alpine' }
+            }
+            steps {
+	       sh 'mvn sonar:sonar'
             }
         }
         stage('Build') {
